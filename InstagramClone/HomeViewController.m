@@ -6,6 +6,10 @@
 //
 
 #import "HomeViewController.h"
+#import "Parse/Parse.h"
+#import "AppDelegate.h"
+#import "LoginViewController.h"
+#import "SceneDelegate.h"
 
 @interface HomeViewController ()
 
@@ -16,6 +20,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+- (IBAction)didTapLogout:(id)sender {
+    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+        // PFUser.current() will now be nil
+        
+        if (error) {}
+        else {
+            SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
+
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+            sceneDelegate.window.rootViewController = loginViewController;
+            NSLog(@"User logged out successfully");
+            
+        }
+        
+    }];
 }
 
 /*
