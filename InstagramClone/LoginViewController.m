@@ -35,11 +35,18 @@
             NSLog(@"Error: %@", error.localizedDescription);
         } else {
             NSLog(@"User registered successfully");
+            [self performSegueWithIdentifier:@"loginSegue" sender:nil];
             
             // manually segue to logged in view
         }
     }];
 }
+
+- (IBAction)didTapSignup:(id)sender {
+    [self registerUser];
+}
+
+
 /*
 #pragma mark - Navigation
 

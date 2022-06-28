@@ -40,6 +40,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Sign Up"/>
+                                <connections>
+                                    <action selector="didTapSignup:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gLt-JV-XVj"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -48,11 +51,28 @@
                     <connections>
                         <outlet property="passwordField" destination="TBa-IQ-FCA" id="A9D-8s-bBf"/>
                         <outlet property="usernameField" destination="ygV-EJ-GYz" id="kOK-Sw-OVR"/>
+                        <segue destination="axr-Wq-hGq" kind="show" identifier="loginSegue" id="Y9D-8B-QSt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="18.840579710144929" y="78.348214285714278"/>
+        </scene>
+        <!--Home View Controller-->
+        <scene sceneID="ZJR-cf-VME">
+            <objects>
+                <viewController id="axr-Wq-hGq" customClass="HomeViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4pC-Ld-D4v">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="2t5-EN-uPW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="86V-lA-mYX"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1A2-Zo-U3d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1016" y="107"/>
         </scene>
     </scenes>
     <resources>
