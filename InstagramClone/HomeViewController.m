@@ -24,6 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
@@ -45,6 +47,9 @@
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
     }];
+    
+    [refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:refreshControl atIndex:0];
 }
 - (IBAction)didTapLogout:(id)sender {
     
@@ -79,6 +84,30 @@
 //    cell.delegate = self;
 
     return cell;
+}
+
+- (void)beginRefresh:(UIRefreshControl *)refreshControl {
+    
+    PFQuery *postQuery = [Post query];
+    [postQuery orderByDescending:@"createdAt"];
+    [postQuery includeKey:@"author"];
+    postQuery.limit = 20;
+
+    // fetch data asynchronously
+    [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
+        if (posts) {
+            NSLog(@"😎😎😎 Successfully loaded home timeline");
+            // do something with the data fetched
+            self.arrayOfPosts = (NSMutableArray *)posts;
+            [self.tableView reloadData];
+            
+            [refreshControl endRefreshing];
+        }
+        else {
+            // handle error
+            NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
+        }
+    }];
 }
 /*
 #pragma mark - Navigation
