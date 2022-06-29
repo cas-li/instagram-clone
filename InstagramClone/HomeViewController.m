@@ -39,6 +39,9 @@
         
     }];
 }
+- (IBAction)didTapCompose:(id)sender {
+    [self performSegueWithIdentifier:@"composeSegue" sender:nil];
+}
 
 /*
 #pragma mark - Navigation
