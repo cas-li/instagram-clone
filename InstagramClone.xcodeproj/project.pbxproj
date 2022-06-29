@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		298B829C286C006700EE54B8 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 298B829B286C006700EE54B8 /* ComposeViewController.m */; };
 		298B82A0286C0CBB00EE54B8 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 298B829F286C0CBB00EE54B8 /* Post.m */; };
+		298B82A3286CB1C200EE54B8 /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 298B82A2286CB1C200EE54B8 /* PostCell.m */; };
 		29CD5353286B963D00C536A6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 29CD5352286B963D00C536A6 /* AppDelegate.m */; };
 		29CD5356286B963D00C536A6 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 29CD5355286B963D00C536A6 /* SceneDelegate.m */; };
 		29CD535C286B963D00C536A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29CD535A286B963D00C536A6 /* Main.storyboard */; };
@@ -50,6 +51,8 @@
 		298B829B286C006700EE54B8 /* ComposeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
 		298B829E286C0CBB00EE54B8 /* Post.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
 		298B829F286C0CBB00EE54B8 /* Post.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
+		298B82A1286CB1C200EE54B8 /* PostCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostCell.h; sourceTree = "<group>"; };
+		298B82A2286CB1C200EE54B8 /* PostCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostCell.m; sourceTree = "<group>"; };
 		29CD534E286B963D00C536A6 /* InstagramClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29CD5351286B963D00C536A6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		29CD5352286B963D00C536A6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -155,6 +158,8 @@
 				29CD535F286B963E00C536A6 /* LaunchScreen.storyboard */,
 				29CD5362286B963E00C536A6 /* Info.plist */,
 				29CD5363286B963E00C536A6 /* main.m */,
+				298B82A1286CB1C200EE54B8 /* PostCell.h */,
+				298B82A2286CB1C200EE54B8 /* PostCell.m */,
 			);
 			path = InstagramClone;
 			sourceTree = "<group>";
@@ -440,6 +445,7 @@
 				29CD5388286B9EBC00C536A6 /* LoginViewController.m in Sources */,
 				29CD5353286B963D00C536A6 /* AppDelegate.m in Sources */,
 				29CD5364286B963E00C536A6 /* main.m in Sources */,
+				298B82A3286CB1C200EE54B8 /* PostCell.m in Sources */,
 				298B829C286C006700EE54B8 /* ComposeViewController.m in Sources */,
 				29CD538B286BB5DD00C536A6 /* HomeViewController.m in Sources */,
 				29CD5356286B963D00C536A6 /* SceneDelegate.m in Sources */,

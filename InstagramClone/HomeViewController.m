@@ -10,8 +10,12 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "SceneDelegate.h"
+#import "Post.h"
+#import "PostCell.h"
 
-@interface HomeViewController ()
+@interface HomeViewController () <UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSMutableArray<Post *> *arrayOfPosts;
 
 @end
 
@@ -20,6 +24,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    
+    PFQuery *postQuery = [Post query];
+    [postQuery orderByDescending:@"createdAt"];
+    [postQuery includeKey:@"author"];
+    postQuery.limit = 20;
+
+    // fetch data asynchronously
+    [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
+        if (posts) {
+            NSLog(@"😎😎😎 Successfully loaded home timeline");
+            // do something with the data fetched
+            self.arrayOfPosts = (NSMutableArray *)posts;
+            [self.tableView reloadData];
+        }
+        else {
+            // handle error
+            NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
+        }
+    }];
 }
 - (IBAction)didTapLogout:(id)sender {
     
@@ -43,6 +68,18 @@
     [self performSegueWithIdentifier:@"composeSegue" sender:nil];
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.arrayOfPosts.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
+
+    cell.post = self.arrayOfPosts[indexPath.row];
+//    cell.delegate = self;
+
+    return cell;
+}
 /*
 #pragma mark - Navigation
 
