@@ -60,7 +60,7 @@
                     <connections>
                         <outlet property="passwordField" destination="TBa-IQ-FCA" id="A9D-8s-bBf"/>
                         <outlet property="usernameField" destination="ygV-EJ-GYz" id="kOK-Sw-OVR"/>
-                        <segue destination="axr-Wq-hGq" kind="show" identifier="loginSegue" id="Y9D-8B-QSt"/>
+                        <segue destination="ied-na-ipN" kind="show" identifier="loginSegue" id="Y9D-8B-QSt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -70,29 +70,58 @@
         <!--Home View Controller-->
         <scene sceneID="ZJR-cf-VME">
             <objects>
-                <viewController id="axr-Wq-hGq" customClass="HomeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="axr-Wq-hGq" customClass="HomeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4pC-Ld-D4v">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gIH-5N-ZFf">
-                                <rect key="frame" x="0.0" y="5" width="70" height="31"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="yay we are in view controller" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="se9-Oj-WCw">
+                                <rect key="frame" x="186" y="359" width="214" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Logout"/>
-                                <connections>
-                                    <action selector="didTapLogout:" destination="axr-Wq-hGq" eventType="touchUpInside" id="hjR-ij-bc7"/>
-                                </connections>
-                            </button>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2t5-EN-uPW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="86V-lA-mYX"/>
+                    <navigationItem key="navigationItem" id="86V-lA-mYX">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="5FK-aM-9xT">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="wZn-yZ-DOX">
+                                <rect key="frame" x="20" y="11" width="92" height="34.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Logout"/>
+                                <connections>
+                                    <action selector="didTapLogout:" destination="axr-Wq-hGq" eventType="touchUpInside" id="hIJ-Z6-Gxy"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1A2-Zo-U3d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1016" y="107"/>
+            <point key="canvasLocation" x="1926.0869565217392" y="106.47321428571428"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Jsg-uv-Xsk">
+            <objects>
+                <navigationController storyboardIdentifier="homeNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="ied-na-ipN" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="9U1-8I-dpf"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Pje-TN-7gd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="axr-Wq-hGq" kind="relationship" relationship="rootViewController" id="eei-5m-hYS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DPX-OC-cmY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1015.9420289855074" y="106.47321428571428"/>
         </scene>
     </scenes>
     <resources>
