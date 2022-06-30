@@ -8,6 +8,7 @@
 #import "ComposeViewController.h"
 #import "Parse/Parse.h"
 #import "Post.h"
+#import "MBProgressHUD/MBProgressHUD.h"
 
 @interface ComposeViewController () <UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *postPicture;
@@ -72,11 +73,13 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (IBAction)didTapPost:(id)sender {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     CGSize imageSize;
     imageSize.width = 500;
     imageSize.height = 500;
     [Post postUserImage:[self resizeImage:self.postPicture.image withSize:imageSize] withCaption:self.caption.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded) {
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
             NSLog(@"post succeeded in posting!");
             [self dismissViewControllerAnimated:true completion:nil];
         }
