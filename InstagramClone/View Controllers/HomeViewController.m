@@ -16,10 +16,10 @@
 #import "MBProgressHUD/MBProgressHUD.h"
 
 @interface HomeViewController () <UITableViewDataSource, UITableViewDelegate>
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray<Post *> *arrayOfPosts;
 @property (weak, nonatomic) IBOutlet UIButton *composeButton;
-
 
 @end
 
@@ -103,9 +103,7 @@ NSString *HeaderViewIdentifier = @"TableViewHeaderView";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
-
     cell.post = self.arrayOfPosts[indexPath.section];
-//    cell.delegate = self;
 
     return cell;
 }
