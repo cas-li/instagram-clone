@@ -47,11 +47,9 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+https://drive.google.com/file/d/1ITl7VZNWaBU39PtSSZhslcnmsk8ZF1I-/view?usp=sharing
 
-GIF created with [Kap](https://getkap.co/).
-
-## Credits
+(the walkthrough is too long to use GIPHY)
 
 List an 3rd party libraries, icons, graphics, or other assets you used in your app.
 
