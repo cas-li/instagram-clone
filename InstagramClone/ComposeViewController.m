@@ -9,9 +9,10 @@
 #import "Parse/Parse.h"
 #import "Post.h"
 
-@interface ComposeViewController ()
+@interface ComposeViewController () <UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *postPicture;
 @property (weak, nonatomic) IBOutlet UITextView *caption;
+@property (weak, nonatomic) IBOutlet UILabel *captionHere;
 
 
 @end
@@ -26,6 +27,12 @@
     
     [self.postPicture addGestureRecognizer:pictureTapGestureRecognizer];
     [self.postPicture setUserInteractionEnabled:YES];
+    
+    self.caption.delegate = self;
+}
+
+- (void)textViewDidChange:(UITextView *)textView {
+    self.captionHere.hidden = (textView.text.length > 0);
 }
 
 - (void) didTapImage:(UITapGestureRecognizer *)sender{
