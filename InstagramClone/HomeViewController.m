@@ -24,10 +24,13 @@
 
 @implementation HomeViewController
 
+NSString *HeaderViewIdentifier = @"TableViewHeaderView";
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:HeaderViewIdentifier];
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -85,17 +88,32 @@
     [self performSegueWithIdentifier:@"composeSegue" sender:nil];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.arrayOfPosts.count;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
 
-    cell.post = self.arrayOfPosts[indexPath.row];
+    cell.post = self.arrayOfPosts[indexPath.section];
 //    cell.delegate = self;
 
     return cell;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UITableViewHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:HeaderViewIdentifier];
+    NSString *at = @"@";
+    header.textLabel.text = [NSString stringWithFormat:@"%@%@", at, self.arrayOfPosts[section].author.username];
+    return header;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 30;
 }
 
 - (void)beginRefresh:(UIRefreshControl *)refreshControl {
