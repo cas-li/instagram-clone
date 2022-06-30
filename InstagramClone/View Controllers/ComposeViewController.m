@@ -79,9 +79,9 @@
     imageSize.height = 500;
     [Post postUserImage:[self resizeImage:self.postPicture.image withSize:imageSize] withCaption:self.caption.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded) {
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
             NSLog(@"post succeeded in posting!");
             [self dismissViewControllerAnimated:true completion:nil];
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
         }
         else {
             NSLog(@"post failed to post");
