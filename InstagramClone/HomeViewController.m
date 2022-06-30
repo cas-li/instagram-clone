@@ -17,6 +17,8 @@
 @interface HomeViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray<Post *> *arrayOfPosts;
+@property (weak, nonatomic) IBOutlet UIButton *composeButton;
+
 
 @end
 
@@ -34,6 +36,7 @@
 
     [refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:refreshControl atIndex:0];
+    self.composeButton.tintColor = UIColor.systemBlueColor;
 }
 
 - (void) loadData {
