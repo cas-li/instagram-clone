@@ -12,6 +12,7 @@
 #import "SceneDelegate.h"
 #import "Post.h"
 #import "PostCell.h"
+#import "DetailsViewController.h"
 
 @interface HomeViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -29,12 +30,18 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
+    [self loadData];
+
+    [refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:refreshControl atIndex:0];
+}
+
+- (void) loadData {
     PFQuery *postQuery = [Post query];
     [postQuery orderByDescending:@"createdAt"];
     [postQuery includeKey:@"author"];
     postQuery.limit = 20;
 
-    // fetch data asynchronously
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
         if (posts) {
             NSLog(@"😎😎😎 Successfully loaded home timeline");
@@ -47,10 +54,12 @@
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
     }];
-    
-    [refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
-    [self.tableView insertSubview:refreshControl atIndex:0];
 }
+
+- (void) viewWillAppear:(BOOL)animated {
+    [self loadData];
+}
+
 - (IBAction)didTapLogout:(id)sender {
     
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
@@ -109,14 +118,22 @@
         }
     }];
 }
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"detailsSegue"]) {
+        PostCell *cell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        Post *dataToPass = self.arrayOfPosts[indexPath.row];
+        
+        DetailsViewController *detailsVC = [segue destinationViewController];
+        detailsVC.post = dataToPass;
+    }
 }
-*/
+
 
 @end
