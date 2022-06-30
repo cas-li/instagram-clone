@@ -13,6 +13,7 @@
 #import "Post.h"
 #import "PostCell.h"
 #import "DetailsViewController.h"
+#import "MBProgressHUD/MBProgressHUD.h"
 
 @interface HomeViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -47,13 +48,17 @@ NSString *HeaderViewIdentifier = @"TableViewHeaderView";
     [postQuery orderByDescending:@"createdAt"];
     [postQuery includeKey:@"author"];
     postQuery.limit = 20;
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
         if (posts) {
             NSLog(@"😎😎😎 Successfully loaded home timeline");
             // do something with the data fetched
             self.arrayOfPosts = (NSMutableArray *)posts;
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
             [self.tableView reloadData];
+            
         }
         else {
             // handle error
