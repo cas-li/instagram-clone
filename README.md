@@ -56,10 +56,11 @@ GIF created with [Kap](https://getkap.co/).
 List an 3rd party libraries, icons, graphics, or other assets you used in your app.
 
 - [AFNetworking](https://github.com/AFNetworking/AFNetworking) - networking task library
+- [MBProgressHUD](https://cocoapods.org/pods/MBProgressHUD) - progress HUD library
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+I took 1.5 sick days at the start of the week due to a medical emergency and also lost some time later in the week due to followup medical appointments. I was thus under time pressure to meet the MVP, but I'm glad that I was able to still meet the MVP and also get some stretch features done!
 
 ## License
 
