@@ -49,8 +49,6 @@ Here's a walkthrough of implemented user stories:
 
 https://drive.google.com/file/d/1ITl7VZNWaBU39PtSSZhslcnmsk8ZF1I-/view?usp=sharing
 
-![hippo](https://submissions.us-east-1.linodeobjects.com/metau_ios/RftIdGUp.gif)
-
 (the walkthrough is too long to use GIPHY)
 
 List an 3rd party libraries, icons, graphics, or other assets you used in your app.
